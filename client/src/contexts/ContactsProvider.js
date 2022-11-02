@@ -10,12 +10,12 @@ export function useContacts() {
 export function ContactsProvider({ children }) {
   const [contacts, setContacts] = useLocalStorage("contacts", []);
 
-  //get new id and name and added to the end of the list by using prevContacts
   function createContact(id, name) {
     setContacts((prevContacts) => {
       return [...prevContacts, { id, name }];
     });
   }
+
   return (
     <ContactsContext.Provider value={{ contacts, createContact }}>
       {children}
